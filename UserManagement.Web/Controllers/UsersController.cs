@@ -29,4 +29,26 @@ public class UsersController : Controller
 
         return View(model);
     }
+
+    [HttpGet]
+    [Route("{active}")]
+    public ViewResult List(bool active)
+    {
+        var items = _userService.FilterByActive(active).Select(p => new UserListItemViewModel
+        {
+            Id = p.Id,
+            Forename = p.Forename,
+            Surname = p.Surname,
+            Email = p.Email,
+            IsActive = p.IsActive
+        });
+
+        var model = new UserListViewModel
+        {
+            Items = items.ToList()
+        };
+
+        return View(model);
+    }
+
 }
