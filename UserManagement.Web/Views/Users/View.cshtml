@@ -1,0 +1,41 @@
+﻿@using UserManagement.Web.Models.Users;
+@model UserManagement.Web.Models.Users.UserViewModel
+
+<h2>User View</h2>
+
+@using (Html.BeginForm("SaveChange", "users"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.User.Id, "User ID")
+        @Html.EditorFor(m => m.User.Id, new { htmlAttributes = new {@type = "text", @class = "form-control", @readonly="readonly" }})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User.IsActive, "Active?")
+        @Html.CheckBoxFor(m => m.User.IsActive, new { htmlAttributes = new { @class = "form-control" }})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User.Forename, "Forename")
+        @Html.EditorFor(m => m.User.Forename, new { htmlAttributes = new { @class = "form-control" }})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User.Surname, "Surname")
+        @Html.EditorFor(m => m.User.Surname, new { htmlAttributes = new { @class = "form-control" }})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User.Email, "Email Address")
+        @Html.EditorFor(m => m.User.Email, new { htmlAttributes = new { @type = "email", @class="form-control" }})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User.DateOfBirth, "Date of Birth")
+        @Html.EditorFor(m => m.User.DateOfBirth, new { htmlAttributes = new { @class="form-control" }})
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+<div>
+    <div class="btn-group" role="group">
+        <a asp-controller="Users" asp-action="List" asp-route-active="" class="btn btn-default">Return To List</a>
+    </div>
+</div>
+

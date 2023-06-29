@@ -1,4 +1,5 @@
-﻿@model UserManagement.Web.Models.Users.UserListViewModel
+﻿@using UserManagement.Web.Models.Users;
+@model UserManagement.Web.Models.Users.UserListViewModel
 
 <h2>User List</h2>
 
@@ -44,7 +45,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="btnToggleActions">
                                 <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item" asp-controller="Users" asp-action="View" asp-route-id="@item.Id" asp-route-mode="@ViewMode.View">Edit</a></li>
                                 <li><a class="dropdown-item" href="#">Delete</a></li>
                             </ul>
                         </div>
